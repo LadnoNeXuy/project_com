@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🕰 Lux Time - Часы</title>
+    <style>
+        /* Стили из предыдущего примера */
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .product {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .cart-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: gold;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="cart-icon" id="cartIcon">🛒</div>
+
+    <div class="product">
+        <h3>Rolex Submariner</h3>
+        <p>Цена: $8900</p>
+        <button class="buy-btn" data-id="1" data-name="Rolex Submariner" data-price="8900">Купить</button>
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Добавление в корзину
+        document.querySelectorAll('.buy-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const product = {
+                    id: this.dataset.id,
+                    name: this.dataset.name,
+                    price: parseFloat(this.dataset.price),
+                    quantity: 1
+                };
+                
+                // Проверяем, есть ли уже товар в корзине
+                const existingItem = cart.find(item => item.id === product.id);
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cart.push(product);
+                }
+                
+                localStorage.setItem('cart', JSON.stringify(cart));
+                alert('Товар добавлен в корзину!');
+            });
+        });
+
+        // Переход в корзину
+        document.getElementById('cartIcon').addEventListener('click', function() {
+            window.location.href = 'cart.html';
+        });
+    </script>
+</body>
+</html>

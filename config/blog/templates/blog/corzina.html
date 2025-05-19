@@ -1,0 +1,68 @@
+<div class="cart-container">
+    <h1>Ваша корзина</h1>
+    
+    <div id="cartItems">
+      <!-- Товары будут добавлены через JS -->
+    </div>
+    
+    <div class="cart-total">
+      Итого: $<span id="totalPrice">0.00</span>
+    </div>
+    
+    <form id="checkoutForm">
+      <h2>Данные для доставки</h2>
+      <input type="text" id="name" placeholder="ФИО" required>
+      <input type="text" id="address" placeholder="Адрес" required>
+      <button type="submit">Оформить заказ</button>
+    </form>
+  </div>  
+  
+  <div class="mini-cart" id="miniCart">
+    <div class="cart-header">
+      <span>🛒 Корзина</span>
+      <span class="cart-total">$0.00</span>
+    </div>
+    <div class="cart-items" id="miniCartItems">
+      <!-- Товары будут добавляться здесь -->
+    </div>
+  </div>
+  
+  <style>
+  .mini-cart {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(30, 30, 30, 0.9);
+    border: 1px solid gold;
+    border-radius: 8px;
+    padding: 12px;
+    width: 220px;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+  }
+  
+  .cart-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: gold;
+  }
+  
+  .cart-items {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+    font-size: 14px;
+  }
+  
+  .cart-total {
+    color: gold;
+  }
+  </style>
